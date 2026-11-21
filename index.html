@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocket Signal Pro</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080d18;color:white;
+ font-family:Arial,sans-serif;text-align:center;
+}
+header{padding:25px 10px;background:#111b2e}
+h1{color:#35d9ff;margin:0}
+.subtitle{color:#9aabc5;margin-top:8px}
+.container{max-width:480px;margin:30px auto;padding:15px}
+.panel{
+ background:#111b2e;border:1px solid #263955;
+ border-radius:18px;padding:25px;margin-bottom:18px;
+}
+.label{color:#9aabc5;font-size:14px}
+.timer{font-size:48px;font-weight:bold;color:#35d9ff;margin:15px}
+.rocket{font-size:75px;margin:15px}
+.signal{font-size:30px;font-weight:bold;margin:15px}
+button{
+ width:100%;padding:16px;border:0;border-radius:12px;
+ background:#16b9e8;color:#06111e;font-size:17px;
+ font-weight:bold;cursor:pointer;
+}
+button:active{transform:scale(.98)}
+.notice{font-size:12px;color:#aab7ca;line-height:1.6}
+footer{color:#71819a;font-size:12px;padding:20px}
+</style>
+</head>
+<body>
+<header>
+ <h1>🚀 ROCKET SIGNAL PRO</h1>
+ <div class="subtitle">Demo Dashboard</div>
+</header>
+
+<div class="container">
+ <div class="panel">
+  <div class="label">DEMO TIMER</div>
+  <div class="timer" id="timer">00:30</div>
+  <div class="label">Next demo round</div>
+ </div>
+
+ <div class="panel">
+  <div class="label">ROCKET DISPLAY</div>
+  <div class="rocket" id="rocket">🚀</div>
+  <div class="signal" id="signal">READY</div>
+  <button onclick="makeDemo()">GENERATE DEMO</button>
+ </div>
+
+ <div class="panel">
+  <div class="label">ACCOUNT STATUS</div>
+  <h3>Demo User</h3>
+  <div class="label">Version 1.0</div>
+ </div>
+
+ <div class="panel notice">
+  <b>Important Notice</b><br>
+  This is a demonstration interface only.
+  Signals are simulated and do not predict real game results.
+  No profit or accuracy is guaranteed.
+ </div>
+</div>
+
+<footer>ROCKET SIGNAL PRO © 2026</footer>
+
+<script>
+let seconds=30;
+
+setInterval(()=>{
+ seconds--;
+ if(seconds<0) seconds=30;
+ let s=String(seconds).padStart(2,"0");
+ document.getElementById("timer").textContent="00:"+s;
+},1000);
+
+function makeDemo(){
+ const up=Math.random()>=0.5;
+ document.getElementById("signal").textContent=
+  up ? "⬆ DEMO UP" : "⬇ DEMO DOWN";
+ document.getElementById("signal").style.color=
+  up ? "#35e69b" : "#ff647c";
+ document.getElementById("rocket").textContent=
+  up ? "🚀⬆" : "🚀⬇";
+}
+</script>
+</body>
+</html>
