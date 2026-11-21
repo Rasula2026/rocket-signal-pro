@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocket Signal Pro - Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080d18;color:white;
+ font-family:Arial,sans-serif;
+}
+header{
+ background:#111b2e;padding:22px;
+ text-align:center;border-bottom:1px solid #263955;
+}
+h1{color:#35d9ff;margin:0}
+.subtitle{color:#9aabc5;margin-top:8px}
+.container{max-width:700px;margin:25px auto;padding:15px}
+.panel{
+ background:#111b2e;border:1px solid #263955;
+ border-radius:16px;padding:22px;margin-bottom:18px;
+}
+.label{color:#9aabc5;font-size:13px}
+.value{font-size:27px;font-weight:bold;margin-top:12px}
+button{
+ width:100%;padding:15px;border:0;border-radius:10px;
+ background:#16b9e8;color:#06111e;font-size:16px;
+ font-weight:bold;cursor:pointer;
+}
+button:disabled{opacity:.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.notice{font-size:13px;color:#aab7ca;line-height:1.6}
+footer{text-align:center;color:#71819a;padding:20px}
+</style>
+</head>
+<body>
+
+<header>
+ <h1>🚀 ROCKET SIGNAL PRO</h1>
+ <div class="subtitle">Educational Demo Dashboard</div>
+</header>
+
+<div class="container">
+
+ <div class="grid">
+  <div class="panel">
+   <div class="label">ACCOUNT</div>
+   <div class="value">Demo User</div>
+  </div>
+  <div class="panel">
+   <div class="label">STATUS</div>
+   <div class="value" style="color:#35e69b">ACTIVE</div>
+  </div>
+ </div>
+
+ <div class="panel">
+  <div class="label">DEMO TIMER</div>
+  <div class="value" id="timer" style="font-size:48px;color:#35d9ff">00:30</div>
+ </div>
+
+ <div class="panel">
+  <div class="label">DEMO RESULT</div>
+  <div class="value" id="result">READY</div>
+  <p class="label" id="description">Press the button to create a sample result.</p>
+  <button onclick="generateDemo()">GENERATE DEMO</button>
+ </div>
+
+ <div class="panel">
+  <div class="label">DEMO HISTORY</div>
+  <div id="history">No demo results yet.</div>
+ </div>
+
+ <div class="panel notice">
+  <b>Important Notice</b>
+  <p>This dashboard is for educational demonstration only.
+  Results are randomly simulated and cannot predict real game outcomes.
+  Risk indicators are not betting advice. No profit or accuracy is guaranteed.</p>
+ </div>
+
+</div>
+
+<footer>ROCKET SIGNAL PRO © 2026</footer>
+
+<script>
+let seconds=30;
+let count=0;
+
+setInterval(()=>{
+ seconds--;
+ if(seconds<0) seconds=30;
+ document.getElementById("timer").textContent=
+  "00:"+String(seconds).padStart(2,"0");
+},1000);
+
+function generateDemo(){
+ const result=Math.random()>=0.5?"DEMO UP":"DEMO DOWN";
+ const color=result==="DEMO UP"?"#35e69b":"#ff647c";
+
+ document.getElementById("result").textContent=result;
+ document.getElementById("result").style.color=color;
+ document.getElementById("description").textContent=
+  "Sample result only — not a prediction.";
+
+ count++;
+ const item=document.createElement("p");
+ item.textContent=count+". "+result;
+ document.getElementById("history").prepend(item);
+}
+</script>
+
+</body>
+</html>
