@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocket Signal Pro - Customers Demo</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d18;color:white;font-family:Arial,sans-serif}
+header{background:#111b2e;padding:22px;text-align:center}
+h1{color:#35d9ff;margin:0}
+.container{max-width:700px;margin:25px auto;padding:15px}
+.panel{background:#111b2e;border:1px solid #263955;border-radius:15px;padding:22px;margin-bottom:16px}
+.label{color:#9aabc5;font-size:13px}
+input{width:100%;padding:13px;margin-top:12px;background:#080d18;border:1px solid #263955;border-radius:8px;color:white}
+button{width:100%;padding:14px;margin-top:12px;border:0;border-radius:9px;background:#16b9e8;color:#06111e;font-weight:bold;cursor:pointer}
+.notice{color:#aab7ca;font-size:13px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<header>
+<h1>👥 CUSTOMERS</h1>
+<p class="label">Demo Customer List</p>
+</header>
+
+<div class="container">
+<div class="panel">
+<div class="label">SAMPLE CUSTOMER</div>
+<h3>Demo User 01</h3>
+<p class="notice">Account type: Demo</p>
+<p class="notice">Status: Active (sample only)</p>
+</div>
+
+<div class="panel">
+<div class="label">ADD SAMPLE CUSTOMER</div>
+<input id="customerName" type="text" placeholder="Enter demo name">
+<button onclick="addCustomer()">ADD DEMO CUSTOMER</button>
+<p class="notice" id="message">Names are displayed only in this browser session.</p>
+</div>
+
+<div class="panel">
+<div class="label">SAMPLE CUSTOMER LIST</div>
+<div id="list">Demo User 01</div>
+</div>
+
+</div>
+
+<script>
+function addCustomer(){
+ const field=document.getElementById("customerName");
+ const name=field.value.trim();
+
+ if(!name){
+  document.getElementById("message").textContent="Enter a demo name first.";
+  return;
+ }
+
+ const item=document.createElement("p");
+ item.textContent=name+" — Demo";
+ document.getElementById("list").appendChild(item);
+ field.value="";
+ document.getElementById("message").textContent="Sample name added.";
+}
+</script>
+
+</body>
+</html>
