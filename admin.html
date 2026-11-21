@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocket Signal Pro - Admin Demo</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d18;color:white;font-family:Arial,sans-serif}
+header{background:#111b2e;padding:22px;text-align:center}
+h1{color:#35d9ff;margin:0}
+.container{max-width:700px;margin:25px auto;padding:15px}
+.panel{background:#111b2e;border:1px solid #263955;border-radius:15px;padding:22px;margin-bottom:16px}
+.label{color:#9aabc5;font-size:13px}
+.value{font-size:26px;margin-top:10px}
+button{width:100%;padding:14px;border:0;border-radius:9px;background:#16b9e8;color:#06111e;font-weight:bold;cursor:pointer}
+.notice{color:#aab7ca;font-size:13px;line-height:1.6}
+a{color:#35d9ff}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🚀 ADMIN PANEL</h1>
+<p class="label">Educational Demo Only</p>
+</header>
+
+<div class="container">
+
+<div class="panel">
+<div class="label">PANEL STATUS</div>
+<div class="value" style="color:#35e69b">DEMO ACTIVE</div>
+</div>
+
+<div class="panel">
+<div class="label">TOTAL DEMO USERS</div>
+<div class="value" id="users">1</div>
+</div>
+
+<div class="panel">
+<div class="label">PROJECT VERSION</div>
+<div class="value">1.0</div>
+</div>
+
+<div class="panel">
+<div class="label">ADMIN INFORMATION</div>
+<p>Admin Demo</p>
+<p class="notice">This page is a visual demonstration. It does not authenticate administrators or manage real customer accounts.</p>
+</div>
+
+<div class="panel">
+<button onclick="showInfo()">CHECK DEMO STATUS</button>
+<p id="message" class="notice"></p>
+</div>
+
+<div class="panel">
+<a href="dashboard.html">Open Demo Dashboard</a>
+</div>
+
+</div>
+
+<script>
+function showInfo(){
+ document.getElementById("message").textContent=
+ "Demo panel is running. No real user data is connected.";
+}
+</script>
+
+</body>
+</html>
