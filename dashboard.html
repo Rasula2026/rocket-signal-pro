@@ -4,126 +4,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rocket Signal Pro - Dashboard</title>
+<title>Rocket Signal Pro</title>
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;background:#080d18;color:white;
+ margin:0;background:#08090d;color:#fff;
  font-family:Arial,sans-serif;
 }
 header{
- background:#111b2e;padding:22px;
- text-align:center;border-bottom:1px solid #263955;
+ padding:24px 18px;
+ background:linear-gradient(120deg,#171717,#29200e);
+ border-bottom:1px solid #a98737;
 }
-h1{color:#35d9ff;margin:0}
-.subtitle{color:#9aabc5;margin-top:8px}
-.container{max-width:700px;margin:25px auto;padding:15px}
+.brand{color:#e8c46b;font-size:23px;font-weight:bold}
+.subtitle{color:#a99c7c;font-size:12px;margin-top:7px}
+.container{max-width:1050px;margin:auto;padding:20px}
+.clock{
+ text-align:center;color:#e8c46b;
+ font-size:30px;font-weight:bold;
+}
+.date{text-align:center;color:#999;margin-top:6px;font-size:12px}
+.grid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:16px;margin-top:22px;
+}
 .panel{
- background:#111b2e;border:1px solid #263955;
- border-radius:16px;padding:22px;margin-bottom:18px;
+ background:linear-gradient(145deg,#191a1e,#101115);
+ border:1px solid #393128;border-radius:17px;
+ padding:22px;text-align:center;
 }
-.label{color:#9aabc5;font-size:13px}
-.value{font-size:27px;font-weight:bold;margin-top:12px}
-button{
- width:100%;padding:15px;border:0;border-radius:10px;
- background:#16b9e8;color:#06111e;font-size:16px;
- font-weight:bold;cursor:pointer;
+.label{font-size:12px;color:#b7a77d;letter-spacing:1px}
+.rocket{font-size:65px;margin:20px}
+.status{font-size:23px;font-weight:bold;color:#e8c46b}
+.value{font-size:27px;font-weight:bold;margin:15px 0}
+.small{font-size:12px;color:#929292;line-height:1.7}
+.history{text-align:left;margin-top:20px}
+.history-item{
+ padding:13px 4px;border-bottom:1px solid #303030;
+ color:#ddd;font-size:13px;
 }
-button:disabled{opacity:.5}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.notice{font-size:13px;color:#aab7ca;line-height:1.6}
-footer{text-align:center;color:#71819a;padding:20px}
+nav{
+ display:flex;justify-content:space-around;
+ background:#141519;border-top:1px solid #393128;
+ padding:17px 5px;position:sticky;bottom:0;
+}
+nav a{color:#d9bd76;text-decoration:none;font-size:12px}
+footer{text-align:center;color:#777;font-size:11px;padding:22px}
+@media(max-width:550px){
+ .grid{grid-template-columns:1fr}
+ header{text-align:center}
+}
 </style>
 </head>
 <body>
 
 <header>
- <h1>🚀 ROCKET SIGNAL PRO</h1>
- <div class="subtitle">Educational Demo Dashboard</div>
+ <div class="brand">🚀 ROCKET SIGNAL PRO</div>
+ <div class="subtitle">PREMIUM ANALYTICS DASHBOARD</div>
 </header>
 
 <div class="container">
-<div class="panel">
-  <div class="label">SRI LANKA LIVE CLOCK</div>
-  <div class="timer" id="liveClock">--:--:--</div>
-  <div class="label">Current Local Time</div>
-</div>
+
+ <div class="panel">
+  <div class="label">SRI LANKA LIVE TIME</div>
+  <div class="clock" id="liveClock">--:--:--</div>
+  <div class="date" id="liveDate">Loading...</div>
+ </div>
+
  <div class="grid">
+
   <div class="panel">
-   <div class="label">ACCOUNT</div>
-   <div class="value">Demo User</div>
+   <div class="label">ROCKET DISPLAY</div>
+   <div class="rocket">🚀</div>
+   <div class="status">READY</div>
+   <p class="small">Rocket display interface</p>
   </div>
+
   <div class="panel">
-   <div class="label">STATUS</div>
-   <div class="value" style="color:#35e69b">ACTIVE</div>
+   <div class="label">SYSTEM STATUS</div>
+   <div class="value">ACTIVE</div>
+   <p class="small">Interface is running</p>
   </div>
+
+  <div class="panel">
+   <div class="label">HISTORICAL DATA</div>
+   <div class="value">—</div>
+   <p class="small">No external game data connected</p>
+  </div>
+
+  <div class="panel">
+   <div class="label">DATA ANALYSIS</div>
+   <div class="value">READY</div>
+   <p class="small">Waiting for historical data</p>
+  </div>
+
  </div>
 
- <div class="panel">
-  <div class="label">DEMO TIMER</div>
-  <div class="value" id="timer" style="font-size:48px;color:#35d9ff">00:30</div>
+ <div class="panel history">
+  <div class="label">ACTIVITY HISTORY</div>
+  <div class="history-item">System initialized</div>
+  <div class="history-item">Dashboard interface loaded</div>
+  <div class="history-item">External data: Not connected</div>
  </div>
 
- <div class="panel">
-  <div class="label">DEMO RESULT</div>
-  <div class="value" id="result">READY</div>
-  <p class="label" id="description">Press the button to create a sample result.</p>
-  <button onclick="generateDemo()">GENERATE DEMO</button>
- </div>
-
- <div class="panel">
-  <div class="label">DEMO HISTORY</div>
-  <div id="history">No demo results yet.</div>
- </div>
-
- <div class="panel notice">
-  <b>Important Notice</b>
-  <p>This dashboard is for educational demonstration only.
-  Results are randomly simulated and cannot predict real game outcomes.
-  Risk indicators are not betting advice. No profit or accuracy is guaranteed.</p>
+ <div class="panel" style="margin-top:16px">
+  <div class="label">ACCOUNT PROFILE</div>
+  <div class="value">Demo User</div>
+  <p class="small">Rocket Signal Pro · Version 2.0</p>
  </div>
 
 </div>
 
-<footer>ROCKET SIGNAL PRO © 2026</footer>
+<nav>
+ <a href="#">⌂ HOME</a>
+ <a href="#history">◷ HISTORY</a>
+ <a href="#">◎ PROFILE</a>
+</nav>
+
+<footer>
+ ROCKET SIGNAL PRO © 2026
+ <br><br>
+ Historical information only. No game predictions or guaranteed results.
+</footer>
 
 <script>
- function updateLiveClock() {
-  const now = new Date();
-
-  document.getElementById("liveClock").textContent =
-    now.toLocaleTimeString("en-GB", {
-      timeZone: "Asia/Colombo",
-      hour12: false
-    });
+function updateLiveClock(){
+ const now=new Date();
+ document.getElementById("liveClock").textContent=
+ now.toLocaleTimeString("en-GB",{timeZone:"Asia/Colombo"});
+ document.getElementById("liveDate").textContent=
+ now.toLocaleDateString("en-GB",{timeZone:"Asia/Colombo"});
 }
-
 updateLiveClock();
-setInterval(updateLiveClock, 1000);
-let seconds=30;
-let count=0;
-
-setInterval(()=>{
- seconds--;
- if(seconds<0) seconds=30;
- document.getElementById("timer").textContent=
-  "00:"+String(seconds).padStart(2,"0");
-},1000);
-
-function generateDemo(){
- const result=Math.random()>=0.5?"DEMO UP":"DEMO DOWN";
- const color=result==="DEMO UP"?"#35e69b":"#ff647c";
-
- document.getElementById("result").textContent=result;
- document.getElementById("result").style.color=color;
- document.getElementById("description").textContent=
-  "Sample result only — not a prediction.";
-
- count++;
- const item=document.createElement("p");
- item.textContent=count+". "+result;
- document.getElementById("history").prepend(item);
-}
+setInterval(updateLiveClock,1000);
 </script>
 
 </body>
