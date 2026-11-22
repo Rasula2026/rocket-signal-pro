@@ -43,7 +43,11 @@ footer{text-align:center;color:#71819a;padding:20px}
 </header>
 
 <div class="container">
-
+<div class="panel">
+  <div class="label">SRI LANKA LIVE CLOCK</div>
+  <div class="timer" id="liveClock">--:--:--</div>
+  <div class="label">Current Local Time</div>
+</div>
  <div class="grid">
   <div class="panel">
    <div class="label">ACCOUNT</div>
@@ -84,6 +88,18 @@ footer{text-align:center;color:#71819a;padding:20px}
 <footer>ROCKET SIGNAL PRO © 2026</footer>
 
 <script>
+ function updateLiveClock() {
+  const now = new Date();
+
+  document.getElementById("liveClock").textContent =
+    now.toLocaleTimeString("en-GB", {
+      timeZone: "Asia/Colombo",
+      hour12: false
+    });
+}
+
+updateLiveClock();
+setInterval(updateLiveClock, 1000);
 let seconds=30;
 let count=0;
 
